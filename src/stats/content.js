@@ -12,10 +12,12 @@ const ContentWrapper = Styled.div`
   padding: 0px 15px;
 `;
 
-const Content = () => (
-  <ContentWrapper>
-    <Items />
-  </ContentWrapper>
-);
+function Content(props) {
+  return (
+    <ContentWrapper>
+      <Items income={props.income} relationships={props.relationships} />
+    </ContentWrapper>
+  );
+}
 
 export default Content;

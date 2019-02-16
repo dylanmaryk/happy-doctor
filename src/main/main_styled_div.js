@@ -1,6 +1,6 @@
 import Styled from 'styled-components';
 
-const Main = Styled.div `
+const MainStyledDiv = Styled.div`
   flex-grow: 0;
   display: flex;
   flex-direction: column;
@@ -14,4 +14,4 @@ const Main = Styled.div `
   }
 `;
 
-export default Main;
+export default MainStyledDiv;

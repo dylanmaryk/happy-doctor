@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import { animateScroll as scroll } from 'react-scroll'
 import MainStyledDiv from './main_styled_div';
 
 class Main extends Component {
-  scrollToBottom() {
-    scroll.scrollToBottom();
-  }
   render() {
     return (
-      <MainStyledDiv>
+      <MainStyledDiv debounce={500}>
         {this.props.children}
       </MainStyledDiv>
     );

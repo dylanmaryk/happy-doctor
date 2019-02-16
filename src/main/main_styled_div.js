@@ -1,6 +1,7 @@
 import Styled from 'styled-components';
+import ScrollToBottom from 'react-scroll-to-bottom';
 
-const MainStyledDiv = Styled.div`
+const MainStyledDiv = Styled(ScrollToBottom)`
   flex-grow: 0;
   display: flex;
   flex-direction: column;

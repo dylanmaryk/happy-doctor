@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import FadeIn from 'react-fade-in';
-import { animateScroll as scroll } from 'react-scroll'
 import './App.css';
 import Wrapper from './wrapper';
 import Sidebar from './sidebar';
@@ -31,9 +30,6 @@ class App extends Component {
       relationships: "Very good 2" 
     }
   );
-  scrollToBottom() {
-    this.mainRef.current.scrollToBottom();
-  }
   render() {
     const { items, income, relationships } = this.state;
     return (
@@ -68,12 +64,9 @@ class App extends Component {
 }
 
 class ItemList extends Component {
-  scrollToBottom() {
-    scroll.scrollToBottom();
-  }
   render() {
     const listItems = this.props.items.map((item, index) =>
-      <FadeIn key={index}>
+      <FadeIn key={index} delay={500}>
         <img src={item} alt="" />
       </FadeIn>
     );

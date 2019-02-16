@@ -1,10 +1,27 @@
 import React, { Component } from 'react';
 import './App.css';
+import Wrapper from './wrapper';
+import Sidebar from './sidebar';
+import Main from './main';
+import Stats from './stats';
+import Logo from './sidebar/logo';
+import Content from './sidebar/content';
 
 class App extends Component {
   render() {
     return (
-      <ItemList />
+      <Wrapper>
+        <Sidebar>
+          <Logo />
+          <Content />
+        </Sidebar>
+        <Main>
+          <ItemList />
+        </Main>
+        <Stats>
+          Stats here
+        </Stats>
+      </Wrapper>
     );
   }
 }

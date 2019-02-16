@@ -5,7 +5,12 @@ import Sidebar from './sidebar';
 import Main from './main';
 import Stats from './stats';
 import Logo from './sidebar/logo';
-import Content from './sidebar/content';
+import SidebarContent from './sidebar/content';
+import Header from './stats/header';
+import StatsContent from './stats/content';
+import Conversation from './sidebar/conversation/wrapper';
+import Dialogue from './sidebar/conversation/dialogue';
+import IllustrationWrapper from './sidebar/conversation/illustration_wrapper';
 
 class App extends Component {
   render() {
@@ -13,13 +18,25 @@ class App extends Component {
       <Wrapper>
         <Sidebar>
           <Logo />
-          <Content />
+          <SidebarContent>
+            <Conversation>
+              <Dialogue>
+                Put the dialogue here
+              </Dialogue>
+              <IllustrationWrapper>
+                <img alt="" src="/img/doctor-1.png" />
+              </IllustrationWrapper>
+            </Conversation>
+          </SidebarContent>
         </Sidebar>
         <Main>
           <ItemList />
         </Main>
         <Stats>
-          Stats here
+          <Header>
+            This is the header
+          </Header>
+          <StatsContent />
         </Stats>
       </Wrapper>
     );

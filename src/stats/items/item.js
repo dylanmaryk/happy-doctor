@@ -1,5 +1,6 @@
 import React from 'react';
 import Styled from 'styled-components';
+import Circle from './circle.js';
 
 const ItemWrapper = Styled.div`
   display: flex;
@@ -12,11 +13,17 @@ const ImageWrapper = Styled.div`
   flex-grow: 0;
   width: 50px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
 
   img {
-    width: 100%
+    width: 40px;
     height: auto;
-    margin: 0 auto;
+    flex-grow: 0;
   }
 `;
 
@@ -32,28 +39,42 @@ const Title = Styled.div`
   font-size: 14px;
   color: #1B1B1B;
   letter-spacing: 0.2px;
-  line-height: 29px;
   flex-grow: 0;
   font-weight: bold;
   text-transform: uppercase;
+  margin-bottom: 5px;
 `;
 
 const Values = Styled.div`
-  font-size: 33px;
+  font-size: 25px;
+  line-height: 33px;
+  vertical-align: middle;
   color: #2667A8;
   letter-spacing: 0;
-  line-height: 29px;
   flex-grow: 1;
 `;
 
-const Item = ({src, alt, title, children}) => (
+const Item = ({src, alt, title, children, circles}) => (
   <ItemWrapper>
     <ImageWrapper>
       <img src={src} alt={alt} />
     </ImageWrapper>
     <ContentWrapper>
       <Title>{title}</Title>
+      {circles ? 
+        <div>
+          <Circle isFull={circles >= 1 && true}/>
+          <Circle isFull={circles >= 2 && true}/>
+          <Circle isFull={circles >= 3 && true}/>
+          <Circle isFull={circles >= 4 && true}/>
+          <Circle isFull={circles >= 5 && true}/>
+          <Circle isFull={circles >= 6 && true}/>
+          <Circle isFull={circles >= 7 && true}/>
+          <Circle isFull={circles >= 8 && true}/>
+        </div>
+        : 
       <Values>{children}</Values>
+      }
     </ContentWrapper>
   </ItemWrapper>
 );

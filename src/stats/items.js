@@ -17,6 +17,13 @@ function Items(props) {
         >
         {props.relationships}
         </Item>
+      <Item
+        src="/img/icon-relationships.png"
+        title="Your Relationships"
+        circles="3"
+        >
+        {props.relationships}
+        </Item>
     </Wrapper>
   );
 }

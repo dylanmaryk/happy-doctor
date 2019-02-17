@@ -9,7 +9,7 @@ const ContentWrapper= Styled.div `
   flex-grow: 1;
   width: 100%;
   padding: 0px 15px;
-`;
+`
 
 const Content = ({ children }) => (
   <ContentWrapper>

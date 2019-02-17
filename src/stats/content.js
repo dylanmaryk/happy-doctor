@@ -9,7 +9,6 @@ const ContentWrapper = Styled.div`
   justify-content: center;
   flex-grow: 1;
   width: 100%;
-  padding: 0px 15px;
 `;
 
 function Content(props) {

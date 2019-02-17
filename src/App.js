@@ -11,6 +11,8 @@ import Header from './stats/header';
 import StatsContent from './stats/content';
 import Conversation from './sidebar/conversation/wrapper';
 import Dialogue from './sidebar/conversation/dialogue';
+import Ctas from './sidebar/conversation/dialogue/ctas';
+import Text from './sidebar/conversation/dialogue/text';
 import IllustrationWrapper from './sidebar/conversation/illustration_wrapper';
 
 class App extends Component {
@@ -39,9 +41,17 @@ class App extends Component {
           <SidebarContent>
             <Conversation>
               <Dialogue>
-              <button onClick={() => {this.addItem(); this.scrollToBottom()}}>
-                Add item
-              </button>
+                <Text>
+                  Question goes here
+                </Text>
+                <Ctas>
+                  <button onClick={() => {this.addItem(); this.scrollToBottom()}}>
+                    Add item
+                  </button>
+                  <button>
+                    No, thanks
+                  </button>
+                </Ctas>
               </Dialogue>
               <IllustrationWrapper>
                 <img alt="" src="img/doctor-1.png" />

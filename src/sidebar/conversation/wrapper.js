@@ -7,7 +7,10 @@ const Wrapper = Styled.div `
   width: 100%;
   height: 100%;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 `;
 
 export default Wrapper;

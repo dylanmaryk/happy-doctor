@@ -24,6 +24,7 @@ class App extends Component {
       firstQuestion: true,
       items: [],
       income: "€ 1.000",
+      animateIncome: false,
       relationships: "Doing well",
       freetime: "10h",
       sleep: "5.5h",
@@ -44,7 +45,8 @@ class App extends Component {
   setIncome(income) {
     setTimeout(() => {
       this.setState({
-        income: income
+        income: income,
+        animateIncome: true
       });
     }, this.timeout);
   }
@@ -138,7 +140,7 @@ class App extends Component {
     this.addItem("img/space.png");
     this.addItem("img/feed-1.png");
     this.addItem("img/feed-2.png");
-    this.setIncome("€ 12.000");
+    this.setIncome("€ 2.000");
     this.setRelationships("Not great");
     this.addItem("img/space.png");
     this.addItem("img/space.png");
@@ -173,7 +175,7 @@ class App extends Component {
     this.showButtons(true);
   }
   render() {
-    const { items, income, relationships, freetime, sleep, stress, professional, patients, emails } = this.state;
+    const { items, income, animateIncome, relationships, freetime, sleep, stress, professional, patients, emails } = this.state;
     return (
       <Wrapper>
         <Sidebar>
@@ -219,6 +221,7 @@ class App extends Component {
             Your life quality
           </Header>
           <StatsContent income={income} 
+                        animateIncome={animateIncome}
                         relationships={relationships} 
                         freetime={freetime} 
                         sleep={sleep}

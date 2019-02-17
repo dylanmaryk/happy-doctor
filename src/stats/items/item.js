@@ -68,14 +68,8 @@ const Values = Styled.div`
 `;
 
 class Item extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { animate: false };
-  }
-
   render() {
-    const {src, alt, title, children, circles} = this.props;
-    const { animate } = this.state;
+    const { src, alt, title, children, circles, animate } = this.props;
     return (
       <ItemWrapper animate={animate}>
         <ImageWrapper>

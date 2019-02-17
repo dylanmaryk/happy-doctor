@@ -15,6 +15,7 @@ function Content(props) {
   return (
     <ContentWrapper>
       <Items income={props.income} 
+             animateIncome={props.animateIncome}
              relationships={props.relationships} 
              freetime={props.freetime} 
              sleep={props.sleep}

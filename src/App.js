@@ -14,49 +14,88 @@ import Dialogue from './sidebar/conversation/dialogue';
 import IllustrationWrapper from './sidebar/conversation/illustration_wrapper';
 
 class App extends Component {
+  timeout = 0;
   constructor(props) {
     super(props);
     this.state = {
-      items: ["img/doctor-1.png"],
-      income: "The value",
-      relationships: "Very good"
+      showDialogue: false,
+      items: [],
+      income: "€ 15.000",
+      relationships: "Doing well",
+      freetime: "57h",
+      sleep: "6.5h",
+      emails: "22"
     }
-    this.mainRef = React.createRef();
   }
-  addItem = () => this.setState(
-    {
-      items: ["img/doctor-1.png", "img/doctor-1.png"], 
-      income: "The value 2", 
-      relationships: "Very good 2" 
-    }
-  );
+  addItem(item, resetTimeout) {
+    setTimeout(() => {
+      this.setState({
+        items: this.state.items.concat(item)
+      });
+      if (resetTimeout) {
+        this.timeout = 0;
+      }
+    }, this.timeout);
+    this.timeout += 2000;
+  }
+  showButtons(resetTimeout) {
+    setTimeout(() => {
+      this.setState({
+        showDialogue: true
+      });
+      if (resetTimeout) {
+        this.timeout = 0;
+      }
+    }, this.timeout);
+    this.timeout += 2000;
+  }
+  addNextItems() {
+
+  }
+  componentDidMount() {
+    this.addItem("img/feed-0.jpg");
+    this.addItem("img/feed-1.jpg");
+    this.showButtons(true);
+  }
   render() {
-    const { items, income, relationships } = this.state;
+    const { items, income, relationships, freetime, sleep, emails } = this.state;
     return (
       <Wrapper>
         <Sidebar>
           <Logo />
           <SidebarContent>
             <Conversation>
-              <Dialogue>
-              <button onClick={() => {this.addItem(); this.scrollToBottom()}}>
-                Add item
-              </button>
-              </Dialogue>
+              {
+                this.state.showDialogue ?
+                  <Dialogue>
+                    <button onClick={() => {this.addNextItems()}}>
+                      Yes
+                    </button>
+                    <button onClick={() => {}}>
+                      No
+                    </button>
+                  </Dialogue>
+                :
+                  null
+              }
               <IllustrationWrapper>
                 <img alt="" src="img/doctor-1.png" />
               </IllustrationWrapper>
             </Conversation>
           </SidebarContent>
         </Sidebar>
-        <Main ref={this.mainRef}>
+        <Main>
           <ItemList items={items} />
         </Main>
         <Stats>
           <Header>
-            This is the header
+            Your life quality
           </Header>
-          <StatsContent income={income} relationships={relationships} />
+          <StatsContent income={income} 
+                        relationships={relationships} 
+                        freetime={freetime} 
+                        sleep={sleep}
+                        emails={emails} />
         </Stats>
       </Wrapper>
     );

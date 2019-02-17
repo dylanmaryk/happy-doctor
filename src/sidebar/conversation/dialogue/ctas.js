@@ -17,7 +17,7 @@ const Ctas= Styled.div `
     padding: 10px;
     flex: 1;
     margin: 15px;
-    font-size: 18px;
+    font-size: 24px;
     border-radius: 40px;
     background: #FFFFFF;
     border: 1px solid #DBDBDB;

@@ -104,6 +104,13 @@ class App extends Component {
       });
     }, this.timeout);
   }
+  updateQuestion() {
+    setTimeout(() => {
+      this.setState({
+        firstQuestion: false
+      });
+    }, this.timeout);
+  }
   showButtons(resetTimeout) {
     setTimeout(() => {
       this.setState({
@@ -115,19 +122,10 @@ class App extends Component {
     }, this.timeout);
     this.timeout += 1000;
   }
-  updateQuestion(resetTimeout) {
-    setTimeout(() => {
-      this.setState({
-        firstQuestion: false
-      });
-      if (resetTimeout) {
-        this.timeout = 0;
-      }
-    }, this.timeout);
-  }
   addNextItems() {
     this.setState({
-      items: ["img/feed-10.png"]
+      items: ["img/feed-10.png"],
+      showDialogue: false
     });
     this.addItem("img/feed-11.png");
     this.setStress(5);
@@ -136,6 +134,7 @@ class App extends Component {
     this.addItem("img/feed-13.png");
     this.addItem("img/feed-14.png");
     this.updateQuestion();
+    this.showButtons(true);
   }
   addNextNextItems() {
     this.addItem("img/feed-15.png");

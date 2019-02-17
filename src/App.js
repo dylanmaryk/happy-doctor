@@ -16,57 +16,120 @@ import Text from './sidebar/conversation/dialogue/text';
 import IllustrationWrapper from './sidebar/conversation/illustration_wrapper';
 
 class App extends Component {
+  timeout = 0;
   constructor(props) {
     super(props);
     this.state = {
-      items: ["img/doctor-1.png"],
-      income: "The value",
-      relationships: "Very good"
+      showDialogue: false,
+      items: [],
+      income: "€ 15.000",
+      relationships: "Doing well",
+      freetime: "57h",
+      sleep: "6.5h",
+      emails: "22"
     }
-    this.mainRef = React.createRef();
   }
-  addItem = () => this.setState(
-    {
-      items: ["img/doctor-1.png", "img/doctor-1.png"], 
-      income: "The value 2", 
-      relationships: "Very good 2" 
-    }
-  );
+  addItem(item, resetTimeout) {
+    setTimeout(() => {
+      this.setState({
+        items: this.state.items.concat(item)
+      });
+      if (resetTimeout) {
+        this.timeout = 0;
+      }
+    }, this.timeout);
+    this.timeout += 500;
+  }
+  showButtons(resetTimeout) {
+    setTimeout(() => {
+      this.setState({
+        showDialogue: true
+      });
+      if (resetTimeout) {
+        this.timeout = 0;
+      }
+    }, this.timeout);
+    this.timeout += 1000;
+  }
+  addNextItems() {
+
+  }
+  componentDidMount() {
+    this.addItem("img/feed-0.png");
+    this.addItem("img/space.png");
+    this.addItem("img/feed-1.png");
+    this.addItem("img/feed-2.png");
+    this.addItem("img/space.png");
+    this.addItem("img/space.png");
+    this.addItem("img/feed-3.png");
+    this.addItem("img/feed-4.png");
+    this.addItem("img/space.png");
+    this.addItem("img/feed-5.png");
+    this.addItem("img/space.png");
+    this.addItem("img/feed-6.png");
+    this.addItem("img/space.png");
+    this.addItem("img/space.png");
+    this.addItem("img/space.png");
+    this.addItem("img/feed-7.png");
+    this.addItem("img/space.png");
+    this.addItem("img/space.png");
+    this.addItem("img/space.png");
+    this.addItem("img/feed-8.png");
+    this.addItem("img/space.png");
+    this.addItem("img/space.png");
+    this.addItem("img/feed-9.png");
+    this.addItem("img/space.png");
+    this.addItem("img/space.png");
+    this.addItem("img/space.png");
+    this.addItem("img/space.png");
+    this.addItem("img/feed-10.png");
+    this.addItem("img/space.png");
+    this.showButtons(true);
+  }
   render() {
-    const { items, income, relationships } = this.state;
+    const { items, income, relationships, freetime, sleep, emails } = this.state;
     return (
       <Wrapper>
         <Sidebar>
           <Logo />
           <SidebarContent>
             <Conversation>
-              <Dialogue>
-                <Text>
-                  Question goes here
-                </Text>
-                <Ctas>
-                  <button onClick={() => {this.addItem(); this.scrollToBottom()}}>
-                    Add item
-                  </button>
-                  <button>
-                    No, thanks
-                  </button>
-                </Ctas>
-              </Dialogue>
+              {
+                this.state.showDialogue ?
+                <Dialogue>
+                  <Text>
+                    Seems like your relationships are suffering a bit, maybe its time to take some less shifts at the hospital?
+                  </Text>
+                  <Ctas>
+                    <button onClick={() => {}}>
+                      No, thanks
+                    </button>
+                    <button onClick={() => {this.addNextItems()}}>
+                      Yes
+                    </button>
+                  </Ctas>
+                </Dialogue>
+                :
+                  null
+              }
               <IllustrationWrapper>
                 <img alt="" src="img/doctor-1.png" />
               </IllustrationWrapper>
             </Conversation>
           </SidebarContent>
         </Sidebar>
-        <Main ref={this.mainRef}>
+        <Main>
           <ItemList items={items} />
         </Main>
         <Stats>
           <Header>
-            This is the header
+            Your life quality
           </Header>
-          <StatsContent income={income} relationships={relationships} />
+          <StatsContent income={income} 
+                        relationships={relationships} 
+                        freetime={freetime} 
+                        sleep={sleep}
+                        emails={emails} />
         </Stats>
       </Wrapper>
     );

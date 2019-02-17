@@ -3,15 +3,16 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 
 const MainStyledDiv = Styled(ScrollToBottom)`
   flex-grow: 0;
-  display: flex;
-  flex-direction: column;
   overflow-Y: scroll;
   width: 700px;
   background: #E9EAED;
+  padding: 10px;
+  text-align: center;
 
   img {
-    max-width: 100%;
+    max-width: 600px;
     height: auto;
+    display: inline-block;
   }
 `;
 

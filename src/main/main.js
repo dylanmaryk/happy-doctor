@@ -4,7 +4,7 @@ import MainStyledDiv from './main_styled_div';
 class Main extends Component {
   render() {
     return (
-      <MainStyledDiv debounce={500}>
+      <MainStyledDiv>
         {this.props.children}
       </MainStyledDiv>
     );

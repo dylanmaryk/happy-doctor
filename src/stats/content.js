@@ -14,7 +14,11 @@ const ContentWrapper = Styled.div`
 function Content(props) {
   return (
     <ContentWrapper>
-      <Items income={props.income} relationships={props.relationships} />
+      <Items income={props.income} 
+             relationships={props.relationships} 
+             freetime={props.freetime} 
+             sleep={props.sleep}
+             emails={props.emails} />
     </ContentWrapper>
   );
 }

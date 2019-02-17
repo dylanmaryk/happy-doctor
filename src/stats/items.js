@@ -7,22 +7,34 @@ function Items(props) {
     <Wrapper>
       <Item
         src="/img/icon-income.png"
-        title={"Your Income"}
+        title="Income"
         >
         {props.income}
         </Item>
       <Item
         src="/img/icon-relationships.png"
-        title="Your Relationships"
+        title="Relationships"
         >
         {props.relationships}
         </Item>
       <Item
-        src="/img/icon-relationships.png"
-        title="Your Relationships"
-        circles="3"
+        src="/img/icon-freetime.png"
+        title="Free time per week"
         >
-        {props.relationships}
+        {props.freetime}
+        </Item>
+      <Item
+        src="/img/icon-sleep.png"
+        title="Average sleep per day"
+        circles="4"
+        >
+        {props.sleep}
+        </Item>
+      <Item
+        src="/img/icon-emails.png"
+        title="Emails to answer"
+        >
+        {props.emails}
         </Item>
     </Wrapper>
   );

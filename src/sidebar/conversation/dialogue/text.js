@@ -9,7 +9,8 @@ const Ctas= Styled.div `
   align-items: center;
   justify-content: center;
   padding: 15px;
-  font-size: 20px;
+  font-size: 24px;
+  line-height: 28px;
 
   img {
     max-width: 90%;

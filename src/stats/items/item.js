@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Styled from 'styled-components';
 import Circle from './circle.js';
 
@@ -54,29 +54,41 @@ const Values = Styled.div`
   flex-grow: 1;
 `;
 
-const Item = ({src, alt, title, children, circles}) => (
-  <ItemWrapper>
-    <ImageWrapper>
-      <img src={src} alt={alt} />
-    </ImageWrapper>
-    <ContentWrapper>
-      <Title>{title}</Title>
-      {circles ? 
-        <div>
-          <Circle isFull={circles >= 1 && true}/>
-          <Circle isFull={circles >= 2 && true}/>
-          <Circle isFull={circles >= 3 && true}/>
-          <Circle isFull={circles >= 4 && true}/>
-          <Circle isFull={circles >= 5 && true}/>
-          <Circle isFull={circles >= 6 && true}/>
-          <Circle isFull={circles >= 7 && true}/>
-          <Circle isFull={circles >= 8 && true}/>
-        </div>
-        : 
-      <Values>{children}</Values>
-      }
-    </ContentWrapper>
-  </ItemWrapper>
-);
+class Item extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { animate: false };
+  }
+
+  render() {
+    const {src, alt, title, children, circles} = this.props;
+    const { animate } = this.state;
+    return (
+      <ItemWrapper animate={animate}>
+        <ImageWrapper>
+          <img src={src} alt={alt} />
+        </ImageWrapper>
+        <ContentWrapper>
+          <Title>{title}</Title>
+          {circles ? 
+            <div>
+              <Circle isFull={circles >= 1 && true}/>
+              <Circle isFull={circles >= 2 && true}/>
+              <Circle isFull={circles >= 3 && true}/>
+              <Circle isFull={circles >= 4 && true}/>
+              <Circle isFull={circles >= 5 && true}/>
+              <Circle isFull={circles >= 6 && true}/>
+              <Circle isFull={circles >= 7 && true}/>
+              <Circle isFull={circles >= 8 && true}/>
+            </div>
+            : 
+          <Values>{children}</Values>
+          }
+        </ContentWrapper>
+      </ItemWrapper>
+    );
+  }
+}
+
 
 export default Item;

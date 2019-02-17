@@ -26,12 +26,18 @@ class App extends Component {
       income: "€ 1.000",
       animateIncome: false,
       relationships: "Doing well",
+      animateRelationships: false,
       freetime: "10h",
+      animateFreetime: false,
       sleep: "5.5h",
+      animateSleep: false,
       stress: 6,
+      animateStress: false,
       professional: 3,
+      animateProfessional: false,
       patients: 5,
-      emails: "122"
+      emails: "122",
+      animateEmails: false
     }
   }
   addItem(item) {
@@ -53,42 +59,48 @@ class App extends Component {
   setRelationships(relationships) {
     setTimeout(() => {
       this.setState({
-        relationships: relationships
+        relationships: relationships,
+        animateRelationships: true
       });
     }, this.timeout);
   }
   setFreetime(freetime) {
     setTimeout(() => {
       this.setState({
-        freetime: freetime
+        freetime: freetime,
+        animateFreetime: true
       });
     }, this.timeout);
   }
   setSleep(sleep) {
     setTimeout(() => {
       this.setState({
-        sleep: sleep
+        sleep: sleep,
+        animateSleep: true
       });
     }, this.timeout);
   }
   setStress(stress) {
     setTimeout(() => {
       this.setState({
-        stress: stress
+        stress: stress,
+        animateStress: true
       });
     }, this.timeout);
   }
   setProfessional(professional) {
     setTimeout(() => {
       this.setState({
-        professional: professional
+        professional: professional,
+        animateProfessional: true
       });
     }, this.timeout);
   }
   setEmails(emails) {
     setTimeout(() => {
       this.setState({
-        emails: emails
+        emails: emails,
+        animateEmails: true
       });
     }, this.timeout);
   }
@@ -175,7 +187,22 @@ class App extends Component {
     this.showButtons(true);
   }
   render() {
-    const { items, income, animateIncome, relationships, freetime, sleep, stress, professional, patients, emails } = this.state;
+    const { items,
+            income,
+            animateIncome,
+            relationships,
+            animateRelationships,
+            freetime,
+            animateFreetime,
+            sleep,
+            animateSleep,
+            stress,
+            animateStress,
+            professional,
+            animateProfessional,
+            patients,
+            emails, 
+            animateEmails } = this.state;
     return (
       <Wrapper>
         <Sidebar>
@@ -220,15 +247,21 @@ class App extends Component {
           <Header>
             Your life quality
           </Header>
-          <StatsContent income={income} 
+          <StatsContent income={income}
                         animateIncome={animateIncome}
-                        relationships={relationships} 
-                        freetime={freetime} 
+                        relationships={relationships}
+                        animateRelationships={animateRelationships}
+                        freetime={freetime}
+                        animateFreetime={animateFreetime}
                         sleep={sleep}
+                        animateSleep={animateSleep}
                         stress={stress}
+                        animateStress={animateStress}
                         professional={professional}
+                        animateProfessional={animateProfessional}
                         patients={patients}
-                        emails={emails} />
+                        emails={emails}
+                        animateEmails={animateEmails} />
         </Stats>
       </Wrapper>
     );

@@ -22,11 +22,14 @@ class App extends Component {
     this.state = {
       showDialogue: false,
       items: [],
-      income: "€ 15.000",
+      income: "€ 1.000",
       relationships: "Doing well",
-      freetime: "57h",
-      sleep: "6.5h",
-      emails: "22"
+      freetime: "10h",
+      sleep: "5.5h",
+      stress: 6,
+      professional: 3,
+      patients: 5,
+      emails: "122"
     }
   }
   addItem(item) {
@@ -43,7 +46,6 @@ class App extends Component {
         income: income
       });
     }, this.timeout);
-    this.timeout += 500;
   }
   setRelationships(relationships) {
     setTimeout(() => {
@@ -51,7 +53,34 @@ class App extends Component {
         relationships: relationships
       });
     }, this.timeout);
-    this.timeout += 500;
+  }
+  setSleep(sleep) {
+    setTimeout(() => {
+      this.setState({
+        sleep: sleep
+      });
+    }, this.timeout);
+  }
+  setStress(stress) {
+    setTimeout(() => {
+      this.setState({
+        stress: stress
+      });
+    }, this.timeout);
+  }
+  setProfessional(professional) {
+    setTimeout(() => {
+      this.setState({
+        professional: professional
+      });
+    }, this.timeout);
+  }
+  setEmails(emails) {
+    setTimeout(() => {
+      this.setState({
+        emails: emails
+      });
+    }, this.timeout);
   }
   showButtons(resetTimeout) {
     setTimeout(() => {
@@ -78,7 +107,7 @@ class App extends Component {
     this.addItem("img/space.png");
     this.addItem("img/feed-1.png");
     this.addItem("img/feed-2.png");
-    this.setIncome("€ 16.000")
+    this.setIncome("€ 12.000")
     this.setRelationships("Not great")
     this.addItem("img/space.png");
     this.addItem("img/space.png");
@@ -88,6 +117,8 @@ class App extends Component {
     this.addItem("img/feed-5.png");
     this.addItem("img/space.png");
     this.addItem("img/feed-6.png");
+    this.setProfessional(2)
+    this.setSleep("6.5h")
     this.addItem("img/space.png");
     this.addItem("img/space.png");
     this.addItem("img/space.png");
@@ -99,16 +130,19 @@ class App extends Component {
     this.addItem("img/space.png");
     this.addItem("img/space.png");
     this.addItem("img/feed-9.png");
+    this.setStress(7)
+    this.setEmails(137)
     this.addItem("img/space.png");
     this.addItem("img/space.png");
     this.addItem("img/space.png");
     this.addItem("img/space.png");
     this.addItem("img/feed-10.png");
+    this.setRelationships("Poor")
     this.addItem("img/space.png");
     this.showButtons(true);
   }
   render() {
-    const { items, income, relationships, freetime, sleep, emails } = this.state;
+    const { items, income, relationships, freetime, sleep, stress, professional, patients, emails } = this.state;
     return (
       <Wrapper>
         <Sidebar>
@@ -150,6 +184,9 @@ class App extends Component {
                         relationships={relationships} 
                         freetime={freetime} 
                         sleep={sleep}
+                        stress={stress}
+                        professional={professional}
+                        patients={patients}
                         emails={emails} />
         </Stats>
       </Wrapper>

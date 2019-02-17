@@ -18,6 +18,9 @@ function Content(props) {
              relationships={props.relationships} 
              freetime={props.freetime} 
              sleep={props.sleep}
+             stress={props.stress}
+             professional={props.professional}
+             patients={props.patients}
              emails={props.emails} />
     </ContentWrapper>
   );

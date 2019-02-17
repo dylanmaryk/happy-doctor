@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Styled from 'styled-components';
+import Styled, { css } from 'styled-components';
 import Circle from './circle.js';
 
 const ItemWrapper = Styled.div`
@@ -7,6 +7,19 @@ const ItemWrapper = Styled.div`
   flex-direction: row;
   border-bottom: 1px solid #CFCFCF;
   padding: 15px 0;
+
+  ${props => props.animate
+    && css`
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: blinkCircle;
+  
+    @keyframes blinkCircle {
+      0% {opacity: 1; }
+      50% {opacity: 0; }
+      100% {opacity: 1;}
+    }
+    `}
 `;
 
 const ImageWrapper = Styled.div`

@@ -29,14 +29,27 @@ class App extends Component {
       emails: "22"
     }
   }
-  addItem(item, resetTimeout) {
+  addItem(item) {
     setTimeout(() => {
       this.setState({
         items: this.state.items.concat(item)
       });
-      if (resetTimeout) {
-        this.timeout = 0;
-      }
+    }, this.timeout);
+    this.timeout += 500;
+  }
+  setIncome(income) {
+    setTimeout(() => {
+      this.setState({
+        income: income
+      });
+    }, this.timeout);
+    this.timeout += 500;
+  }
+  setRelationships(relationships) {
+    setTimeout(() => {
+      this.setState({
+        relationships: relationships
+      });
     }, this.timeout);
     this.timeout += 500;
   }
@@ -52,13 +65,21 @@ class App extends Component {
     this.timeout += 1000;
   }
   addNextItems() {
-
+    this.setState({
+      items: ["img/feed-10.png"]
+    });
+    this.addItem("img/feed-11.png");
+    this.addItem("img/feed-12.png");
+    this.addItem("img/feed-13.png");
+    this.addItem("img/feed-14.png");
   }
   componentDidMount() {
     this.addItem("img/feed-0.png");
     this.addItem("img/space.png");
     this.addItem("img/feed-1.png");
     this.addItem("img/feed-2.png");
+    this.setIncome("€ 16.000")
+    this.setRelationships("Not great")
     this.addItem("img/space.png");
     this.addItem("img/space.png");
     this.addItem("img/feed-3.png");
